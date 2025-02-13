@@ -71,3 +71,15 @@ npm run build
 - Ejecutar haciendo doble clic en `ChessClockWidget.exe`
 - El widget se puede mover arrastrando desde cualquier parte
 - Click derecho para acceder al menú de opciones
+
+## Descargar versión construida
+
+Puedes descargar la versión ya construida del proyecto desde el siguiente enlace de Mega:
+
+[Descargar desde Mega](https://mega.nz/file/xt5nnLxK#0mh4dXbxMAkoRloIN3-8y-wzvE8ihMc6wkfUlwYLcK0)
+
+Para descargar:
+1. Haz clic en el enlace anterior
+2. Presiona el botón "Descargar" en Mega
+3. Espera a que se complete la descarga
+4. Descomprime el archivo descargado para acceder al contenido
