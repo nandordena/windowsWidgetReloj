@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Clock Widget</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        /* Área para arrastrar la ventana */
+        .titlebar {
+            -webkit-app-region: drag;
+            height: 20px;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body style="-webkit-app-region: drag">
+    <div class="titlebar"></div>
+    <div class="widget-container" id="widget">
+        <!-- Panel de Control -->
+        <div class="control-panel">
+            <div class="blue-controls">
+                <button class="btn-plus">+</button>
+                <button class="btn-play-pause">▶</button>
+                <button class="btn-minus">-</button>
+            </div>
+            <div class="red-controls">
+                <button class="btn-plus">+</button>
+                <button class="btn-play-pause">▶</button>
+                <button class="btn-minus">-</button>
+            </div>
+        </div>
+        
+        <!-- Contenedor de Relojes -->
+        <div class="clocks-container">
+            <!-- Temporizador Rojo -->
+            <div class="timer red-timer hidden">
+                <div class="segment-display" id="redTimer"></div>
+            </div>
+
+            <!-- Temporizador Azul -->
+            <div class="timer blue-timer hidden">
+                <div class="segment-display" id="blueTimer"></div>
+            </div>
+
+            <!-- Reloj Principal -->
+            <div class="main-clock">
+                <div class="segment-display" id="mainClock"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/display.js"></script>
+    <script src="scripts/timer.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html> 
