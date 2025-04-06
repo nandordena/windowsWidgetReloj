@@ -1,58 +1,37 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow } = require('electron');
 const path = require('path');
 
 function createWindow() {
     const win = new BrowserWindow({
-        width: 300,
-        height: 400,
-        frame: false,  // Sin marco de ventana
-        transparent: true,  // Fondo transparente
+        width: 400,
+        height: 200,
+        frame: false,
+        transparent: true,
+        alwaysOnTop: true,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false
-        },
-        alwaysOnTop: true,  // Siempre visible
-        skipTaskbar: true   // No aparece en la barra de tareas
+        }
     });
 
-    // Cargar el archivo HTML
     win.loadFile('index.html');
-
-    // Manejar el click derecho para el menú contextual
-    win.webContents.on('context-menu', (event, params) => {
-        const { Menu } = require('electron');
-        const menu = Menu.buildFromTemplate([
-            {
-                label: 'Siempre visible',
-                type: 'checkbox',
-                checked: win.isAlwaysOnTop(),
-                click: () => {
-                    const newValue = !win.isAlwaysOnTop();
-                    win.setAlwaysOnTop(newValue);
-                }
-            },
-            { type: 'separator' },
-            {
-                label: 'Cerrar',
-                click: () => {
-                    win.close();
-                }
-            }
-        ]);
-        menu.popup();
-    });
+    
+    // Deshabilitar el menú
+    win.setMenu(null);
 }
 
-app.whenReady().then(createWindow);
+app.whenReady().then(() => {
+    createWindow();
+
+    app.on('activate', () => {
+        if (BrowserWindow.getAllWindows().length === 0) {
+            createWindow();
+        }
+    });
+});
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
         app.quit();
-    }
-});
-
-app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) {
-        createWindow();
     }
 }); 
